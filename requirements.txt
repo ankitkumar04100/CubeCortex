@@ -1,0 +1,5 @@
+fastapi
+pytorch
+scikit-learn
+prometheus-client
+kafka-python
