@@ -14,15 +14,14 @@
 7. [What's next for CubeCortex](#whats-next-for-cubecortex)   
 8. [Features](#features)  
 9. [Built With](#built-with)  
-10. [App Status](#app-status)  
-11. [Setup Guide](#setup-guide)  
-12. [Usage](#usage)  
-13. [Equations & AI Models](#equations--ai-models)  
-14. [Hackathon Story Expansion](#hackathon-story-expansion)  
-15. [Roadmap](#roadmap)  
-16. [Glossary](#glossary)  
-17. [References](#references)
-18. [Detailed Architecture](#detailed-architecture) 
+10. [App Status](#app-status)   
+11. [Usage](#usage)  
+12. [Equations & AI Models](#equations--ai-models)  
+13. [Hackathon Story Expansion](#hackathon-story-expansion)  
+14. [Roadmap](#roadmap)  
+15. [Glossary](#glossary)  
+16. [References](#references)
+17. [Detailed Architecture](#detailed-architecture) 
 
 
 ---
@@ -149,31 +148,141 @@ Python, FastAPI, PyTorch, Node.js, Express, React, TailwindCSS, Chart.js, Kubern
 
 ---
 
-## Setup Guide
+## 12. Usage
 
-### Prerequisites
-- Google Cloud Project with **GKE enabled**  
-- `kubectl` & `gcloud` CLI  
-- Docker installed locally  
-- Node.js + Python environment  
+Once CubeCortex is deployed, developers and operators can interact with the system as if they are managing a "thinking Kubernetes cluster."  
 
-### Steps
-```bash
-# Clone repo
-git clone https://github.com/yourusername/CubeCortex.git
-cd CubeCortex
+### Steps to Use:
+1. **Access the Dashboard**  
+   - Retrieve the LoadBalancer IP from GKE.  
+   - Open it in the browser to view real-time health, alerts, and AI-driven recommendations.  
 
-# Deploy Online Boutique (base app)
-kubectl apply -f kubernetes-manifests/online-boutique/
+2. **Run Load Tests**  
+   - Use tools like `Locust` or `k6` to simulate user traffic.  
+   - Observe CubeCortex agents adaptively scaling services and detecting anomalies.  
 
-# Deploy CubeCortex Agents
-kubectl apply -f kubernetes-manifests/cubecortex-agents/
+3. **Interact with Agents**  
+   - Send simulated API calls for fraud detection or recommendations.  
+   - Use the AI-powered chatbot agent for support simulation.  
 
-# Deploy Dashboard
-kubectl apply -f kubernetes-manifests/dashboard/
+4. **Monitor Logs & Metrics**  
+   - View agent logs in Kubernetes:  
+     ```bash
+     kubectl logs <agent-pod-name>
+     ```
+   - Metrics available through **Prometheus + Grafana dashboards**.  
 
-# Verify Pods
-kubectl get pods
+CubeCortex effectively transforms microservice operations from **manual DevOps intervention** to **autonomous AI-driven orchestration**.  
+
+---
+
+## 13. Equations & AI Models
+
+CubeCortex integrates mathematical and machine learning models to make predictions and decisions.  
+
+### 🔍 Anomaly Detection (Autoencoder Loss Function)
+We trained autoencoders on normal microservice traffic. Any significant deviation is flagged as an anomaly.  
+
+\[
+L(x,\hat{x}) = \frac{1}{n} \sum_{i=1}^{n} (x_i - \hat{x}_i)^2
+\]
+
+Where:  
+- \( x \) = input (observed traffic pattern)  
+- \( \hat{x} \) = reconstructed (predicted normal pattern)  
+
+---
+
+### 📈 Load Prediction (ARIMA / Time Series)
+Used to forecast demand and scale pods **before spikes occur**.  
+
+\[
+y_t = c + \phi_1 y_{t-1} + \phi_2 y_{t-2} + ... + \epsilon_t
+\]
+
+Where:  
+- \( y_t \) = predicted load at time *t*  
+- \( \phi \) = autoregressive parameters  
+- \( \epsilon_t \) = error term  
+
+---
+
+### 🎯 Recommendation Scoring (Dot Product Similarity)
+Used in the **Recommendation Agent** for customer/product personalization.  
+
+\[
+Score(u, i) = \vec{U}_u \cdot \vec{I}_i
+\]
+
+Where:  
+- \( \vec{U}_u \) = user feature vector  
+- \( \vec{I}_i \) = item/service feature vector  
+
+---
+
+## 14. Hackathon Story Expansion
+
+### 💡 Inspiration
+We wanted to bridge **Kubernetes reliability** with **AI adaptability**. Like a brain, CubeCortex uses agents as "neurons," analyzing signals and making corrective actions.  
+
+### 🛠️ What it does
+CubeCortex upgrades an existing **Online Boutique microservice app** with:  
+- Real-time anomaly detection  
+- AI-driven autoscaling  
+- Fraud prevention pipelines  
+- Recommendation systems  
+- AI chatbot for customer support  
+
+### ⚙️ How we built it
+- Deployed **Online Boutique** on **GKE**.  
+- Built AI agents in **Python (FastAPI, PyTorch)** and **Node.js**.  
+- Integrated **Kafka** as the event bus.  
+- Connected metrics pipelines with **Prometheus + Grafana**.  
+- Developed an interactive **React + Tailwind dashboard**.  
+
+### 🚧 Challenges
+- Handling **real-time inference latency**.  
+- Preventing **AI over-control** of Kubernetes.  
+- Simulating **realistic fraud/traffic data** for training.  
+- Hackathon **time constraints** with ambitious scope.  
+
+### 🏆 Accomplishments
+- A **working prototype** where AI agents act like neurons orchestrating microservices.  
+- Built reusable **Helm charts & manifests**.  
+- Delivered an **intuitive dashboard** for non-experts.  
+
+---
+
+## 15. Roadmap
+
+- 📦 **Helm Chart Release** – Package CubeCortex for simple installs.  
+- 🧠 **Reinforcement Learning Agents** – Self-optimizing microservices orchestration.  
+- 🔒 **Security Agents** – Detect and mitigate zero-day attacks.  
+- ☁️ **Multi-cloud Expansion** – Deployable on AWS EKS & Azure AKS.  
+- 🌍 **Sustainability** – Energy-efficient autoscaling with carbon-aware scheduling.  
+- 🤝 **Community Contributions** – Open-source modules for new AI agents.  
+
+---
+
+## 16. Glossary
+
+- **GKE** – Google Kubernetes Engine; managed Kubernetes service.  
+- **Microservices** – Independent, loosely coupled services working together.  
+- **AI Agent** – A specialized service that makes autonomous decisions using ML.  
+- **Autoscaling** – Dynamic adjustment of pods based on workload demand.  
+- **Event Bus** – Middleware for decoupled communication (Kafka / PubSub).  
+- **Anomaly Detection** – Identifying unusual behavior deviating from the baseline.  
+
+---
+
+## 17. References
+
+- [Google Cloud Online Boutique](https://github.com/GoogleCloudPlatform/microservices-demo)  
+- [Bank of Anthos](https://github.com/GoogleCloudPlatform/bank-of-anthos)  
+- [Kubernetes Documentation](https://kubernetes.io/docs)  
+- [GKE Turns 10 Hackathon – Official Portal](https://gkehacks.devpost.com)  
+
+---
 
 
 ## Detailed Architecture
@@ -194,4 +303,5 @@ graph TD
     D4 --> E
     E --> F[GKE API Server]
     F --> G[Kubernetes Pods/Nodes]
+
 
