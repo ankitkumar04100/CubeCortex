@@ -11,18 +11,19 @@
 4. [Challenges we ran into](#challenges-we-ran-into)  
 5. [Accomplishments that we're proud of](#accomplishments-that-were-proud-of)  
 6. [What we learned](#what-we-learned)  
-7. [What's next for CubeCortex](#whats-next-for-cubecortex)  
-8. [Detailed Architecture](#detailed-architecture)  
-9. [Features](#features)  
-10. [Built With](#built-with)  
-11. [App Status](#app-status)  
-12. [Setup Guide](#setup-guide)  
-13. [Usage](#usage)  
-14. [Equations & AI Models](#equations--ai-models)  
-15. [Hackathon Story Expansion](#hackathon-story-expansion)  
-16. [Roadmap](#roadmap)  
-17. [Glossary](#glossary)  
-18. [References](#references)  
+7. [What's next for CubeCortex](#whats-next-for-cubecortex)   
+8. [Features](#features)  
+9. [Built With](#built-with)  
+10. [App Status](#app-status)  
+11. [Setup Guide](#setup-guide)  
+12. [Usage](#usage)  
+13. [Equations & AI Models](#equations--ai-models)  
+14. [Hackathon Story Expansion](#hackathon-story-expansion)  
+15. [Roadmap](#roadmap)  
+16. [Glossary](#glossary)  
+17. [References](#references)
+18. [Detailed Architecture](#detailed-architecture) 
+
 
 ---
 
@@ -125,6 +126,56 @@ CubeCortex is built as a **layered architecture**:
 
 ---
 
+## Features
+
+- ✅ AI-powered anomaly detection in microservice traffic  
+- ✅ Context-aware autoscaling  
+- ✅ Fraud detection pipeline  
+- ✅ Recommendation engine for customer interactions  
+- ✅ AI-powered support chatbot  
+- ✅ Interactive dashboard with real-time insights  
+
+---
+
+## Built With
+
+Python, FastAPI, PyTorch, Node.js, Express, React, TailwindCSS, Chart.js, Kubernetes, GKE, Docker, Prometheus, Grafana, Kafka, Pub/Sub, GitHub Actions, Helm  
+
+---
+
+## App Status
+
+**Prototype / Beta** – Core functionality is working, with scope for future expansion.  
+
+---
+
+## Setup Guide
+
+### Prerequisites
+- Google Cloud Project with **GKE enabled**  
+- `kubectl` & `gcloud` CLI  
+- Docker installed locally  
+- Node.js + Python environment  
+
+### Steps
+```bash
+# Clone repo
+git clone https://github.com/yourusername/CubeCortex.git
+cd CubeCortex
+
+# Deploy Online Boutique (base app)
+kubectl apply -f kubernetes-manifests/online-boutique/
+
+# Deploy CubeCortex Agents
+kubectl apply -f kubernetes-manifests/cubecortex-agents/
+
+# Deploy Dashboard
+kubectl apply -f kubernetes-manifests/dashboard/
+
+# Verify Pods
+kubectl get pods
+
+
 ## Detailed Architecture
 
 ### High-level Design
@@ -143,5 +194,4 @@ graph TD
     D4 --> E
     E --> F[GKE API Server]
     F --> G[Kubernetes Pods/Nodes]
-
 
